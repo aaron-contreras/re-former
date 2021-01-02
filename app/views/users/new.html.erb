@@ -13,15 +13,29 @@
 
   <%#<input type="submit" value="Submit">%>
 <%#</form>%>
-<%= form_tag(users_path, method: 'post') do %>
-  <%= label_tag(:username, 'Username:') %>
-  <%= text_field_tag(:username) %>
 
-  <%= label_tag(:password, 'Password:') %>
-  <%= password_field_tag(:password) %>
+<%#<%= form_tag(users_path, method: 'post') do %>
+  <%#<%= label_tag(:username, 'Username:') %>
+  <%#<%= text_field_tag(:username) %>
 
-  <%= label_tag(:email, 'Email:') %>
-  <%= email_field_tag(:email) %>
+  <%#<%= label_tag(:password, 'Password:') %>
+  <%#<%= password_field_tag(:password) %>
 
-  <%= submit_tag('Create user') %>
+  <%#<%= label_tag(:email, 'Email:') %>
+  <%#<%= email_field_tag(:email) %>
+
+  <%#<%= submit_tag('Create user') %>
+<%#<% end %>
+
+<%= form_for @user do |user_form| %>
+  <%= user_form.label :email, 'Dump your email here ->' %>
+  <%= user_form.email_field :email, value: 'example@example.com' %>
+
+  <%= user_form.label :username, 'Your username here ->' %>
+  <%= user_form.text_field :username, value: 'an_awesome_username' %>
+
+  <%= user_form.label :password, 'Secret password ->' %>
+  <%= user_form.password_field :password %>
+
+  <%= user_form.submit %>
 <% end %>
